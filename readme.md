@@ -22,7 +22,7 @@ spring.datasource.password={password}
 
 ### Run
 
-Run this file: **[ProdutosBootApplication](https://github.com/jjeanjacques10/api-rest-java/blob/master/src/main/java/br/com/fiap/N2020Application.java)**
+Run this file: **[ProdutosBootApplication](https://github.com/jjeanjacques10/api-rest-java/blob/master/src/main/java/br/com/fiap/ProdutosBootApplication.java)**
 
 > Port: 8080
 
