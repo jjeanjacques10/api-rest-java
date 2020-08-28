@@ -1,0 +1,401 @@
+{
+	"info": {
+		"_postman_id": "0bf446cb-f53c-4974-8c48-9fefae218bdc",
+		"name": "Produtos Boot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "findAll Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/fiap/categoria",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/fiap/categoria/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"categoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/fiap/categoria/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"categoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save Categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeCategoria\": \"Notebook 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/fiap/categoria",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeCategoria\": \"Notebookuuuuu2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/fiap/categoria/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"categoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "findAll Produto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/fiap/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById Produto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/fiap/produto/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"produto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Produto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/fiap/produto/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"produto",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save Produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Nome do produto 1111\",\r\n    \"sku\": \"sku-0001\",\r\n    \"descricao\": \"DescriÃ§Ã£o do Produto 1\",\r\n    \"preco\": 1.99,\r\n    \"caracteristicas\": \"CaracterÃ­sticas do produto 1\",\r\n    \"categoria\": {\r\n        \"idCategoria\": 1\r\n    },\r\n    \"marca\": {\r\n        \"idMarca\": 1\r\n    },\r\n    \"lojas\": [\r\n        {\r\n            \"idLoja\": 1\r\n        },\r\n        {\r\n            \"idLoja\": 3\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/fiap/produto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "",
+								"variables": ""
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/fiap/produto/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"produto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8d4efa3a-571c-41ec-8e14-de93b8d9e1d6",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b174d6c1-3ea8-4b06-b0cf-5d83d854da8e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Marca",
+			"item": [
+				{
+					"name": "findAll Marca",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/fiap/marca",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"marca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById Marca",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/fiap/marca/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"marca",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Marca",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/fiap/marca/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"marca",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save Marca",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeMarca\": \"LssG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/fiap/marca",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"marca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Marca",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nomeMarca\": \"LssG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/fiap/marca/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fiap",
+								"marca",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
