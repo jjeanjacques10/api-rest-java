@@ -45,34 +45,25 @@ public class MarcaController {
 	}
 
 	@PostMapping()
-	public ResponseEntity save(@RequestBody @Valid MarcaModel marcaModel, BindingResult bindingResult) {
+	public ResponseEntity save(@RequestBody @Valid MarcaModel marcaModel) {
 
-		if (!bindingResult.hasErrors()) {
-			repository.save(marcaModel);
+		repository.save(marcaModel);
 
-			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-					.buildAndExpand(marcaModel.getIdMarca()).toUri();
-			return ResponseEntity.created(location).build();
-		} else {
-			return ResponseEntity.badRequest().build();
-		}
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(marcaModel.getIdMarca()).toUri();
+		return ResponseEntity.created(location).build();
 
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity update(@PathVariable("id") long id, @RequestBody @Valid MarcaModel marcaModel,
-			BindingResult bindingResult) {
+	public ResponseEntity update(@PathVariable("id") long id, @RequestBody @Valid MarcaModel marcaModel) {
 
-		if (!bindingResult.hasErrors()) {
-			marcaModel.setIdMarca(id);
-			repository.save(marcaModel);
+		marcaModel.setIdMarca(id);
+		repository.save(marcaModel);
 
-			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-					.buildAndExpand(marcaModel.getIdMarca()).toUri();
-			return ResponseEntity.created(location).build();
-		} else {
-			return ResponseEntity.badRequest().build();
-		}
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(marcaModel.getIdMarca()).toUri();
+		return ResponseEntity.created(location).build();
 
 	}
 

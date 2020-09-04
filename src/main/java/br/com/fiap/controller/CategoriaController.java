@@ -45,34 +45,25 @@ public class CategoriaController {
 	}
 
 	@PostMapping()
-	public ResponseEntity save(@RequestBody @Valid CategoriaModel categoriaModel, BindingResult bindingResult) {
+	public ResponseEntity save(@RequestBody @Valid CategoriaModel categoriaModel) {
 
-		if (!bindingResult.hasErrors()) {
-			repository.save(categoriaModel);
+		repository.save(categoriaModel);
 
-			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-					.buildAndExpand(categoriaModel.getIdCategoria()).toUri();
-			return ResponseEntity.created(location).build();
-		} else {
-			return ResponseEntity.badRequest().build();
-		}
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(categoriaModel.getIdCategoria()).toUri();
+		return ResponseEntity.created(location).build();
 
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity update(@PathVariable("id") long id, @RequestBody @Valid CategoriaModel categoriaModel,
-			BindingResult bindingResult) {
+	public ResponseEntity update(@PathVariable("id") long id, @RequestBody @Valid CategoriaModel categoriaModel) {
 
-		if (!bindingResult.hasErrors()) {
-			categoriaModel.setIdCategoria(id);
-			repository.save(categoriaModel);
+		categoriaModel.setIdCategoria(id);
+		repository.save(categoriaModel);
 
-			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-					.buildAndExpand(categoriaModel.getIdCategoria()).toUri();
-			return ResponseEntity.created(location).build();
-		} else {
-			return ResponseEntity.badRequest().build();
-		}
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(categoriaModel.getIdCategoria()).toUri();
+		return ResponseEntity.created(location).build();
 
 	}
 

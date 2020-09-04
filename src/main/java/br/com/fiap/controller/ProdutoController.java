@@ -60,36 +60,29 @@ public class ProdutoController {
 	}
 
 	@PostMapping()
-	public ResponseEntity save(@RequestBody @Valid ProdutoModel produtoModel, BindingResult bindingResult,
-			RedirectAttributes redirectAttributes) {
+	public ResponseEntity save(@RequestBody @Valid ProdutoModel produtoModel, RedirectAttributes redirectAttributes) {
 
-		if (!bindingResult.hasErrors()) {
-			produtoRepository.save(produtoModel);
+		produtoRepository.save(produtoModel);
 
-			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-					.buildAndExpand(produtoModel.getId()).toUri();
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(produtoModel.getId()).toUri();
 
-			return ResponseEntity.created(location).build();
-		} else {
-			return ResponseEntity.badRequest().build();
-		}
+		return ResponseEntity.created(location).build();
+
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity update(@PathVariable("id") long id, @RequestBody @Valid ProdutoModel produtoModel,
-			BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+			RedirectAttributes redirectAttributes, Model model) {
 
-		if (!bindingResult.hasErrors()) {
-			produtoModel.setId(id);
-			produtoRepository.save(produtoModel);
+		produtoModel.setId(id);
+		produtoRepository.save(produtoModel);
 
-			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-					.buildAndExpand(produtoModel.getId()).toUri();
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(produtoModel.getId()).toUri();
 
-			return ResponseEntity.created(location).build();
-		} else {
-			return ResponseEntity.badRequest().build();
-		}
+		return ResponseEntity.created(location).build();
+
 	}
 
 	@DeleteMapping("/{id}")

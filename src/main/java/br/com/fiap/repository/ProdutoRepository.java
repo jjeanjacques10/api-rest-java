@@ -22,8 +22,8 @@ public interface ProdutoRepository extends JpaRepository<ProdutoModel, Long> {
 	@Query(value = "UPDATE tb_produto SET nome = ?1, sku = ?2 WHERE id = ?3", nativeQuery = true)
 	void updateProductNameAndSku(String nome, String sku, long id);
 	
-	@Transactional
+	/*@Transactional
 	@Modifying
 	@Query("DELETE ProdutoModel WHERE id = ?1")
-	void deleteById(long id);
+	void deleteById(long id);*/
 }
