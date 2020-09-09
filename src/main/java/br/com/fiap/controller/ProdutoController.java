@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.fiap.business.ProdutoBusiness;
+import br.com.fiap.exception.ReponseBusinessException;
 import br.com.fiap.model.CategoriaModel;
 import br.com.fiap.model.ProdutoModel;
 import br.com.fiap.repository.CategoriaRepository;
@@ -44,6 +46,9 @@ public class ProdutoController {
 
 	@Autowired
 	public MarcaRepository marcaRepository;
+	
+	@Autowired
+	public ProdutoBusiness produtoBusiness;
 
 	@GetMapping()
 	public ResponseEntity<List<ProdutoModel>> findAll() {
@@ -60,8 +65,10 @@ public class ProdutoController {
 	}
 
 	@PostMapping()
-	public ResponseEntity save(@RequestBody @Valid ProdutoModel produtoModel, RedirectAttributes redirectAttributes) {
+	public ResponseEntity save(@RequestBody @Valid ProdutoModel produtoModel, RedirectAttributes redirectAttributes) throws ReponseBusinessException {
 
+		produtoBusiness.applyBusiness(produtoModel);
+		
 		produtoRepository.save(produtoModel);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -73,8 +80,10 @@ public class ProdutoController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity update(@PathVariable("id") long id, @RequestBody @Valid ProdutoModel produtoModel,
-			RedirectAttributes redirectAttributes, Model model) {
+			RedirectAttributes redirectAttributes, Model model) throws ReponseBusinessException {
 
+		produtoBusiness.applyBusiness(produtoModel);
+		
 		produtoModel.setId(id);
 		produtoRepository.save(produtoModel);
 

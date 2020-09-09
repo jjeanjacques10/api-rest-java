@@ -25,7 +25,6 @@ public class RestExceptionHandler {
 	private static final String INVALID_JSON = "Formato do Json Inválido";
 	private static final String INVALID_ARGUMENTS = "Argumentos inválidos";
 
-	
 	@ExceptionHandler(value = { NoSuchElementException.class, NoHandlerFoundException.class,
 			EmptyResultDataAccessException.class })
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
@@ -62,11 +61,17 @@ public class RestExceptionHandler {
 
 		return new ResponseException(request, INVALID_ARGUMENTS, detail);
 	}
-	
+
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	public ResponseException handleException(HttpServletRequest request, Exception exception) {
 		return new ResponseException(request, UNEXPECTED_ERROR, exception.getMessage());
+	}
+
+	@ExceptionHandler(ReponseBusinessException.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public ResponseException ReponseBusinessException(HttpServletRequest request, ReponseBusinessException exception) {
+		return new ResponseException(request, INVALID_ARGUMENTS, exception.getMessage());
 	}
 
 }
