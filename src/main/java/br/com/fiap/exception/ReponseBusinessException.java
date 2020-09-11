@@ -3,10 +3,6 @@ package br.com.fiap.exception;
 public class ReponseBusinessException extends Exception {
 	private String message;
 
-	public ReponseBusinessException() {
-		super();
-	}
-
 	public ReponseBusinessException(String message) {
 		super();
 		this.message = message;

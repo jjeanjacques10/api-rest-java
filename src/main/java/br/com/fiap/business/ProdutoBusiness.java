@@ -45,12 +45,12 @@ public class ProdutoBusiness {
 
 		categoria = categoriaRepository.findById(categoria.getIdCategoria()).get();
 
-		if (categoria.getNomeCategoria().equals("Smartphone")) {
-			return preco.add(new BigDecimal(10));
-		} else if (categoria.getNomeCategoria().equals("Notebook")) {
-			return preco.add(new BigDecimal(20));
+		if ("Smartphone".equals(categoria.getNomeCategoria())) {
+			preco = preco.add(new BigDecimal(10));
+		} else if ("Notebook".equals(categoria.getNomeCategoria())) {
+			preco = preco.add(new BigDecimal(20));
 		}
-		
+
 		return preco;
 	}
 
