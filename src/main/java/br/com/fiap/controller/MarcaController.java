@@ -23,6 +23,7 @@ import br.com.fiap.model.CategoriaModel;
 import br.com.fiap.model.MarcaModel;
 import br.com.fiap.repository.CategoriaRepository;
 import br.com.fiap.repository.MarcaRepository;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/marca")
@@ -31,6 +32,7 @@ public class MarcaController {
 	public MarcaRepository repository;
 
 	@GetMapping()
+	@ApiOperation("Retorna uma lista de marcas")
 	public ResponseEntity<List<MarcaModel>> findAll() {
 
 		List<MarcaModel> marcas = repository.findAll();
@@ -38,6 +40,7 @@ public class MarcaController {
 	}
 
 	@GetMapping("/{id}")
+	@ApiOperation("Retorna uma marca apartir do identificador")
 	public ResponseEntity<MarcaModel> findById(@PathVariable("id") long id) {
 
 		MarcaModel marca = repository.findById(id).get();
@@ -45,6 +48,7 @@ public class MarcaController {
 	}
 
 	@PostMapping()
+	@ApiOperation("Salva uma nova marca")
 	public ResponseEntity save(@RequestBody @Valid MarcaModel marcaModel) {
 
 		repository.save(marcaModel);
@@ -56,18 +60,18 @@ public class MarcaController {
 	}
 
 	@PutMapping("/{id}")
+	@ApiOperation("Atualiza uma marca apartir do identificador")
 	public ResponseEntity update(@PathVariable("id") long id, @RequestBody @Valid MarcaModel marcaModel) {
 
 		marcaModel.setIdMarca(id);
 		repository.save(marcaModel);
 
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(marcaModel.getIdMarca()).toUri();
-		return ResponseEntity.created(location).build();
+		return ResponseEntity.ok().build();
 
 	}
 
 	@DeleteMapping("/{id}")
+	@ApiOperation("Exclui uma marca apartir do identificador")
 	public ResponseEntity deleteById(@PathVariable("id") long id) {
 
 		repository.deleteById(id);

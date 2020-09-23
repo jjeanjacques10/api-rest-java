@@ -22,6 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.fiap.model.CategoriaModel;
 import br.com.fiap.repository.CategoriaRepository;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/categoria")
@@ -31,6 +32,7 @@ public class CategoriaController {
 	public CategoriaRepository repository;
 
 	@GetMapping()
+	@ApiOperation("Retorna uma lista de categorias")
 	public ResponseEntity<List<CategoriaModel>> findAll() {
 
 		List<CategoriaModel> categorias = repository.findAll();
@@ -38,6 +40,7 @@ public class CategoriaController {
 	}
 
 	@GetMapping("/{id}")
+	@ApiOperation("Retorna uma categoria apartir do identificador")
 	public ResponseEntity<CategoriaModel> findById(@PathVariable("id") long id) {
 
 		CategoriaModel categoria = repository.findById(id).get();
@@ -45,6 +48,7 @@ public class CategoriaController {
 	}
 
 	@PostMapping()
+	@ApiOperation("Salva uma nova categoria")
 	public ResponseEntity save(@RequestBody @Valid CategoriaModel categoriaModel) {
 
 		repository.save(categoriaModel);
@@ -56,6 +60,7 @@ public class CategoriaController {
 	}
 
 	@PutMapping("/{id}")
+	@ApiOperation("Atualiza uma categoria apartir do identificador")
 	public ResponseEntity update(@PathVariable("id") long id, @RequestBody @Valid CategoriaModel categoriaModel) {
 
 		categoriaModel.setIdCategoria(id);
@@ -68,6 +73,7 @@ public class CategoriaController {
 	}
 
 	@DeleteMapping("/{id}")
+	@ApiOperation("Exclui uma categoria apartir do identificador")
 	public ResponseEntity deleteById(@PathVariable("id") long id) {
 
 		repository.deleteById(id);

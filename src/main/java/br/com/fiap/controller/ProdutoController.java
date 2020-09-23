@@ -31,12 +31,11 @@ import br.com.fiap.model.ProdutoModel;
 import br.com.fiap.repository.CategoriaRepository;
 import br.com.fiap.repository.MarcaRepository;
 import br.com.fiap.repository.ProdutoRepository;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/produto")
 public class ProdutoController {
-
-	private static final String PRODUTO_FOLDER = "produto/";
 
 	@Autowired
 	public ProdutoRepository produtoRepository;
@@ -51,6 +50,7 @@ public class ProdutoController {
 	public ProdutoBusiness produtoBusiness;
 
 	@GetMapping()
+	@ApiOperation("Retorna uma lista de produtos")
 	public ResponseEntity<List<ProdutoModel>> findAll() {
 
 		List<ProdutoModel> produtos = produtoRepository.findAll();
@@ -58,6 +58,7 @@ public class ProdutoController {
 	}
 
 	@GetMapping("/{id}")
+	@ApiOperation("Retorna um produto apartir do identificador")
 	public ResponseEntity<ProdutoModel> findById(@PathVariable("id") long id) {
 
 		ProdutoModel produto = produtoRepository.findById(id).get();
@@ -65,6 +66,7 @@ public class ProdutoController {
 	}
 
 	@PostMapping()
+	@ApiOperation("Salva um novo produto")
 	public ResponseEntity save(@RequestBody @Valid ProdutoModel produtoModel, RedirectAttributes redirectAttributes) throws ReponseBusinessException {
 
 		produtoBusiness.applyBusiness(produtoModel);
@@ -79,6 +81,7 @@ public class ProdutoController {
 	}
 
 	@PutMapping("/{id}")
+	@ApiOperation("Atualiza um produto apartir do identificador")
 	public ResponseEntity update(@PathVariable("id") long id, @RequestBody @Valid ProdutoModel produtoModel,
 			RedirectAttributes redirectAttributes, Model model) throws ReponseBusinessException {
 
@@ -90,11 +93,12 @@ public class ProdutoController {
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(produtoModel.getId()).toUri();
 
-		return ResponseEntity.created(location).build();
+		return ResponseEntity.ok().build();
 
 	}
 
 	@DeleteMapping("/{id}")
+	@ApiOperation("Exclui um produto apartir do identificador")
 	public ResponseEntity deleteById(@PathVariable("id") long id) {
 
 		produtoRepository.deleteById(id);
