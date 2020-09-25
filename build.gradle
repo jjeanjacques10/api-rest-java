@@ -23,9 +23,8 @@ dependencies {
 	runtimeOnly 'com.oracle.ojdbc:ojdbc8'
 	
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	
 	providedRuntime 'javax.servlet:jstl'
 	providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'

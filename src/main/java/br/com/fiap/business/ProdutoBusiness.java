@@ -26,7 +26,7 @@ public class ProdutoBusiness {
 		String sku = changeSkuToUpperCase(produtoModel.getSku());
 		produtoModel.setSku(sku);
 
-		BigDecimal preco = addValueToPreco(produtoModel.getCategoria(), produtoModel.getPreco());
+		BigDecimal preco = addValueToPreco(produtoModel.getPreco(), produtoModel.getCategoria());
 		produtoModel.setPreco(preco);
 
 		verifyNomeProduto(produtoModel.getNome());
@@ -41,7 +41,7 @@ public class ProdutoBusiness {
 		}
 	}
 
-	private BigDecimal addValueToPreco(CategoriaModel categoria, BigDecimal preco) {
+	protected BigDecimal addValueToPreco(BigDecimal preco, CategoriaModel categoria) {
 
 		categoria = categoriaRepository.findById(categoria.getIdCategoria()).get();
 
@@ -54,7 +54,7 @@ public class ProdutoBusiness {
 		return preco;
 	}
 
-	private String changeSkuToUpperCase(String sku) {
+	protected String changeSkuToUpperCase(String sku) {
 		return sku.toUpperCase();
 	}
 }
