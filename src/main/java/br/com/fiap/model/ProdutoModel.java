@@ -150,5 +150,11 @@ public class ProdutoModel {
 		this.lojas = lojas;
 	}
 
+	@Override
+	public String toString() {
+		return "ProdutoModel [id=" + id + ", nome=" + nome + ", sku=" + sku + ", descricao=" + descricao + ", preco="
+				+ preco + ", caracteristicas=" + caracteristicas + ", categoria=" + categoria + ", marca=" + marca
+				+ ", lojas=" + lojas + "]";
+	}
 
 }

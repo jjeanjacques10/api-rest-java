@@ -34,7 +34,7 @@ public class ProdutoBusiness {
 		return produtoModel;
 	}
 
-	private void verifyNomeProduto(String nome) throws ReponseBusinessException {
+	protected void verifyNomeProduto(String nome) throws ReponseBusinessException {
 		nome = nome.toUpperCase();
 		if (nome.contains("TESTE")) {
 			throw new ReponseBusinessException("O produto não pode ter teste no nome");
