@@ -56,7 +56,6 @@ public class CategoriaController {
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(categoriaModel.getIdCategoria()).toUri();
 		return ResponseEntity.created(location).build();
-
 	}
 
 	@PutMapping("/{id}")
@@ -66,10 +65,7 @@ public class CategoriaController {
 		categoriaModel.setIdCategoria(id);
 		repository.save(categoriaModel);
 
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(categoriaModel.getIdCategoria()).toUri();
-		return ResponseEntity.created(location).build();
-
+		return ResponseEntity.ok().build();
 	}
 
 	@DeleteMapping("/{id}")
