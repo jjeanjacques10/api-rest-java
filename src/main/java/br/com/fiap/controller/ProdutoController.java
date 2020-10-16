@@ -26,6 +26,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.fiap.business.ProdutoBusiness;
 import br.com.fiap.exception.ReponseBusinessException;
+import br.com.fiap.kafka.ProdutoProducer;
 import br.com.fiap.model.CategoriaModel;
 import br.com.fiap.model.ProdutoModel;
 import br.com.fiap.repository.CategoriaRepository;
@@ -48,6 +49,9 @@ public class ProdutoController {
 	
 	@Autowired
 	public ProdutoBusiness produtoBusiness;
+	
+	@Autowired
+	public ProdutoProducer produtoProducer;
 
 	@GetMapping()
 	@ApiOperation("Retorna uma lista de produtos")
@@ -72,6 +76,7 @@ public class ProdutoController {
 		produtoBusiness.applyBusiness(produtoModel);
 		
 		produtoRepository.save(produtoModel);
+		produtoProducer.publish(produtoModel.getSku(), produtoModel.getNome());
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(produtoModel.getId()).toUri();

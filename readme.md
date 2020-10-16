@@ -6,6 +6,7 @@ Rest API for product inventory control developed with Java Spring Boot. This pro
 
 - [Java Spring Boot](https://spring.io/projects/spring-boot)
 - [Hibernate](https://hibernate.org/)
+- [Kafka](https://kafka.apache.org/)
 
 ### Clone
 Clone the repository on your machine with the command
@@ -21,6 +22,8 @@ spring.datasource.password={password}
 ```
 
 ### Run
+
+First you need to start Kafka. After...
 
 Run this file: **[ProdutosBootApplication](https://github.com/jjeanjacques10/api-rest-java/blob/master/src/main/java/br/com/fiap/ProdutosBootApplication.java)**
 
